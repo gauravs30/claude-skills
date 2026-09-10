@@ -1,0 +1,4 @@
+# skills-cli lockfiles are per-consumer, not part of the source repo
+skills-lock.json
+.DS_Store
+Thumbs.db

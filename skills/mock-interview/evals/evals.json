@@ -1,0 +1,64 @@
+{
+  "skill_name": "mock-interview",
+  "evals": [
+    {
+      "id": 1,
+      "name": "trigger-and-first-question",
+      "prompt": "I've got a DevOps interview coming up at a mid-size product company, senior level. Can you run me a quick mock interview - maybe 3 questions on Kubernetes and CI/CD? Ask them one at a time like a real interviewer would.",
+      "expected_output": "Recognizes this as a mock-interview request and uses the skill. Resolves config (level=senior, tier=product, count~3, topic=core-devops) and confirms it back in one line. Tells the candidate the available commands (hint/pass/time check/stop). Asks exactly ONE scenario question, phrased in a realistic interviewer voice with a short setup. Does NOT reveal the answer, model points, or hints. Waits for the candidate to respond rather than continuing.",
+      "files": [],
+      "expectations": [
+        "The response confirms the resolved interview configuration (senior level, product-company tier, ~3 questions, Kubernetes/CI-CD topic) back to the user in roughly one line before starting",
+        "The response tells the candidate the available in-interview commands (at least: hint, pass, stop)",
+        "The response poses exactly ONE interview question this turn, not a list of two or more questions",
+        "The single question is framed as a realistic scenario with 2-4 sentences of situational setup, not a bare 'Explain X' or 'What is Y' definitional prompt",
+        "The response does NOT include the model answer, a list of points a strong answer should cover, evaluation criteria, or an unsolicited hint",
+        "The response ends by handing over to the candidate and does not fabricate a candidate answer or continue to question 2",
+        "The question topic is within Kubernetes or CI/CD as requested",
+        "The opening sets expectations on session length or pacing (a rough minute estimate, or per-question time), not only the number of questions"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "full-interview-mediocre-candidate",
+      "prompt": "Let's do a mock interview. Senior SRE, product-company style, 2 questions on incident response and SLOs. You play the interviewer, I'll paste my answers. When I type 'END INTERVIEW' give me the full written debrief and save it.\n\nReady.\n\n(For your first question, here is my answer:) \"If latency spikes I'd open the dashboards, check whether there was a recent deploy, and roll it back if there was. Then I'd look at the database to see if it's slow.\"\n\n(For any follow-ups on that, my answer is:) \"I'm not totally sure - I guess I'd scale up the service and add more replicas.\"\n\n(For your second question, here is my answer:) \"For an SLO I'd probably target 99.9% uptime. I'd mostly alert on CPU and memory being high. I don't really know how to calculate an error budget.\"\n\nEND INTERVIEW",
+      "expected_output": "Runs the interview turn-based, then after END INTERVIEW produces a structured debrief with an honestly calibrated (not inflated) verdict, a 5-dimension score table, per-question breakdowns citing what the candidate said, a patterns section, and a prioritized study plan. Saves a session file and appends to mock-interview-log.md.",
+      "files": [],
+      "expectations": [
+        "The interview is conducted turn-based: question 1 is asked and answered with at least one follow-up before question 2 is introduced (the transcript does not present both questions at once)",
+        "During the interview portion (before END INTERVIEW) the interviewer does not teach, correct, confirm, or praise the substance of the candidate's answers - only neutral acknowledgements and probing follow-ups",
+        "The debrief contains an explicit overall verdict that is one of: Strong Hire, Hire, Lean Hire, No Hire",
+        "The verdict is NOT 'Strong Hire' and NOT 'Hire' - the candidate's answers (vague incident triage, alerting on CPU/memory, not knowing error budgets) warrant 'Lean Hire' or 'No Hire' at a senior product bar",
+        "The debrief includes a table or clearly delineated list scoring all five rubric dimensions (technical depth & correctness, structured problem-solving, tradeoff & judgment, production & reliability mindset, communication) on a 1-5 scale",
+        "The per-question breakdown references specifics of what the candidate actually said (e.g. 'scale up / add replicas', 'alert on CPU and memory', 'target 99.9%', 'don't know error budget')",
+        "The per-question breakdown includes what a strong answer covers - e.g. for the SLO question: user-centric SLIs, error budget as (1 - target) of the window, burn-rate alerting; for the latency question: stabilize before diagnosing, saturation vs crash reasoning",
+        "The debrief includes a cross-question 'Patterns' (or equivalent) section identifying recurring themes",
+        "The debrief includes a prioritized study plan with between 3 and 6 ordered items, each naming a concrete gap",
+        "A file named mock-interview-log.md exists in the run's outputs directory and contains a table row for this session",
+        "A per-session detail file (under a mock-interview-sessions directory or similar) exists in the run's outputs directory",
+        "The interviewer stops probing a question once the candidate adds nothing new twice in a row - it does not fire a third or fourth follow-up at a stonewalling candidate"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "company-name-mapping-and-save",
+      "prompt": "quiz me for my amazon SRE interview, staff level, 2 scenario questions. i'll keep my answers short. after the 2nd one tell me how i did and save it so i can track my progress.\n\nready\n\nanswer 1: \"I'd use a circuit breaker and retries with backoff. Add a queue between the services. Scale the downstream service.\"\n\nanswer 2: \"Multi-region means deploy to two regions and use Route53 failover. Replicate the database. Test the failover sometimes.\"\n\nthat's all my answers, give me the feedback",
+      "expected_output": "Maps 'amazon' to the MANG tier, level=staff, count=2. MANG interview texture. Honest verdict calibrated to a MANG staff bar (short shallow answers -> No Hire or Lean Hire, ideally noting they'd fare better at a lower tier). Saves both a session detail file and a row in mock-interview-log.md and tells the user where.",
+      "files": [],
+      "expectations": [
+        "The company 'amazon' is mapped to the MANG / FAANG-tier company tier (stated in the config confirmation, notes, or debrief)",
+        "The resolved config is staff level and 2 questions",
+        "The interviewer pushes past the candidate's initial 3-sentence answer at least once - asking for quantification, a failure mode, or 'what breaks at scale' - rather than accepting it and moving on",
+        "The debrief contains an explicit overall verdict that is one of: Strong Hire, Hire, Lean Hire, No Hire",
+        "The verdict is 'No Hire' or 'Lean Hire' for the MANG staff bar (the answers lack quantification, depth, and rigor expected at that bar)",
+        "The debrief includes scores for all five rubric dimensions on a 1-5 scale",
+        "The per-question breakdown names what a strong answer covers - e.g. retry budgets / jitter / load shedding / circuit breaker half-open for Q1; DR-vs-active-active, RTO/RPO, the database as the hard part, split-brain, failover testing for Q2",
+        "The debrief includes a prioritized study plan with 3 to 6 items",
+        "A file named mock-interview-log.md exists in the run's outputs directory with a row for this session",
+        "A per-session detail file exists in the run's outputs directory",
+        "The response tells the user where the session was saved (a file path or directory is mentioned)",
+        "The interviewer stops probing a question once the candidate adds nothing new twice in a row - it does not fire a third or fourth follow-up at a stonewalling candidate"
+      ]
+    }
+  ]
+}
