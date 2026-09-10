@@ -1,4 +1,4 @@
-# AI-skills
+# claude-skills
 
 Personal collection of [agent skills](https://docs.claude.com/en/docs/claude-code/skills) for Claude Code.
 
@@ -13,14 +13,14 @@ Personal collection of [agent skills](https://docs.claude.com/en/docs/claude-cod
 With the [`skills` CLI](https://skills.sh):
 
 ```bash
-npx skills add https://github.com/gauravs30/AI-skills --skill mock-interview
+npx skills add https://github.com/gauravs30/claude-skills --skill mock-interview
 ```
 
 Or manually — copy the skill folder into your skills directory:
 
 ```bash
-git clone https://github.com/gauravs30/AI-skills.git
-cp -r AI-skills/skills/mock-interview ~/.claude/skills/mock-interview
+git clone https://github.com/gauravs30/claude-skills.git
+cp -r claude-skills/skills/mock-interview ~/.claude/skills/mock-interview
 ```
 
 Then invoke it in Claude Code with `/mock-interview` (e.g. `/mock-interview kubernetes mid Amazon 5`).

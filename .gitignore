@@ -1,4 +1,11 @@
 # skills-cli lockfiles are per-consumer, not part of the source repo
 skills-lock.json
+
+# skill-creator working artifacts / local session output
+*-workspace/
+mock-interview-sessions/
+mock-interview-log.md
+*.skill
+
 .DS_Store
 Thumbs.db

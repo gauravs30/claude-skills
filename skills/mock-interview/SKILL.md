@@ -1,18 +1,17 @@
 ---
 name: mock-interview
 description: >-
-  Run a realistic, live DevOps / SRE / Cloud Engineer mock interview and then analyze the
-  candidate's performance. Use this whenever the user wants to practice, simulate, or be drilled
-  in a technical interview for an infrastructure / platform / reliability / cloud / SRE / DevOps
-  role. Triggers include `/mock-interview`, "mock interview", "interview me", "quiz me for my SRE
-  interview", "help me prep for my Amazon / Google / service-company DevOps interview", "give me a
-  scenario-based Kubernetes interview question", "act as my interviewer", or any request to be
-  interviewed, grilled, or evaluated on DevOps / SRE / cloud / Linux / Terraform / Kubernetes /
-  incident-response topics. The interview runs one question at a time with realistic follow-ups,
-  calibrated by topic, difficulty level (junior / mid / senior / staff) and company tier
-  (service / product / MANG-FAANG). It ends with a scored rubric, model answers, a prioritized
-  study plan, and a saved session log. Also use this when the user wants to review or track their
-  interview-prep progress across sessions.
+  Run a realistic DevOps / SRE / Cloud / Platform Engineer mock interview, then analyze the
+  candidate's performance. Use whenever the user wants to practice, simulate, or be drilled in a
+  technical interview for an infrastructure / platform / reliability / cloud / SRE / DevOps role.
+  Triggers: /mock-interview, "mock interview", "interview me", "quiz me for my SRE interview",
+  "act as my interviewer", "prep me for my Amazon / Google / service-company DevOps interview",
+  or any request to be interviewed or evaluated on DevOps / SRE / cloud / Linux / Terraform /
+  Kubernetes / incident-response topics. One question at a time with follow-ups, calibrated by
+  topic, level and company tier. Ends with a scored rubric, model answers, a study plan, and a
+  saved session log; also covers reviewing prep progress across sessions. NOT for: explaining a
+  concept, reviewing code/config, writing a runbook/proposal/STAR story, CV or salary help,
+  company research, or mock interviews for non-infra roles (PM, frontend, behavioral-only).
 ---
 
 # Mock Interview — DevOps / SRE / Cloud Engineer
